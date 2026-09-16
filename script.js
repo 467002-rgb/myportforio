@@ -1,490 +1,122 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ========================================
+// MOBILE MENU
+// ========================================
 
-    /* =====================================================
-       โฟลเดอร์รูปจริงใน GitHub
-       ===================================================== */
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-    const folderName =
-        "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4";
-
-    /*
-       encodeURIComponent ช่วยให้ชื่อโฟลเดอร์ภาษาไทย
-       และช่องว่างทำงานได้บน GitHub Pages
-    */
-
-    const imageFolder =
-        encodeURIComponent(folderName);
+if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+}
 
 
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
+// ปิดเมนูเมื่อกดลิงก์
+document.querySelectorAll("#navMenu a").forEach(link => {
 
-    const menuBtn =
-        document.getElementById("menuBtn");
+    link.addEventListener("click", () => {
 
-    const navLinks =
-        document.getElementById("navLinks");
+        navMenu.classList.remove("active");
 
+    });
 
-    if (menuBtn && navLinks) {
-
-        menuBtn.addEventListener(
-            "click",
-            () => {
-
-                const opened =
-                    navLinks.classList.toggle("open");
-
-                menuBtn.textContent =
-                    opened ? "✕" : "☰";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    opened
-                        ? "ปิดเมนู"
-                        : "เปิดเมนู"
-                );
-
-            }
-        );
+});
 
 
-        navLinks
-            .querySelectorAll("a")
-            .forEach(link => {
 
-                link.addEventListener(
-                    "click",
-                    () => {
+// ========================================
+// PORTFOLIO GALLERY
+// ========================================
 
-                        navLinks
-                            .classList
-                            .remove("open");
+const galleryGrid =
+    document.getElementById("galleryGrid");
 
-                        menuBtn.textContent =
-                            "☰";
-
-                        menuBtn.setAttribute(
-                            "aria-label",
-                            "เปิดเมนู"
-                        );
-
-                    }
-                );
-
-            });
-
-    }
+const imageFolder = "images";
 
 
-    /* =====================================================
-       IMAGE MODAL
-       ===================================================== */
+// สร้างรูปทั้งหมด 11 หน้า
+for (let i = 1; i <= 11; i++) {
 
-    const modal =
-        document.getElementById(
-            "imageModal"
-        );
+    const item = document.createElement("div");
 
-    const modalImage =
-        document.getElementById(
-            "modalImage"
-        );
+    item.className = "gallery-item";
 
-    const modalClose =
-        document.getElementById(
-            "modalClose"
-        );
+    item.innerHTML = `
+        <img
+            src="${imageFolder}/${i}.png"
+            alt="Portfolio หน้า ${i}"
+            loading="lazy"
+        >
+
+        <div class="gallery-number">
+            Portfolio หน้า ${i}
+        </div>
+    `;
+
+    item.addEventListener("click", () => {
+
+        openModal(`${imageFolder}/${i}.png`);
+
+    });
+
+    galleryGrid.appendChild(item);
+}
 
 
-    function openModal(
-        src,
-        alt = "ผลงาน Portfolio"
-    ) {
 
-        if (!modal || !modalImage) {
-            return;
-        }
+// ========================================
+// IMAGE MODAL
+// ========================================
 
-        modalImage.src = src;
+const modal =
+    document.getElementById("imageModal");
 
-        modalImage.alt = alt;
+const modalImage =
+    document.getElementById("modalImage");
 
-        modal.classList.add(
-            "active"
-        );
 
-        modal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
+function openModal(imageSrc) {
 
-        document.body.style.overflow =
-            "hidden";
+    modalImage.src = imageSrc;
+
+    modal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeModal() {
+
+    modal.classList.remove("active");
+
+    modalImage.src = "";
+
+    document.body.style.overflow = "";
+}
+
+
+
+// คลิกพื้นหลังเพื่อปิด
+modal.addEventListener("click", (event) => {
+
+    if (event.target === modal) {
+
+        closeModal();
 
     }
 
+});
 
-    function closeModal() {
 
-        if (!modal) {
-            return;
-        }
 
-        modal.classList.remove(
-            "active"
-        );
+// กด ESC เพื่อปิดรูป
+document.addEventListener("keydown", (event) => {
 
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+    if (event.key === "Escape") {
 
-        document.body.style.overflow =
-            "";
+        closeModal();
 
     }
-
-
-    if (modalClose) {
-
-        modalClose.addEventListener(
-            "click",
-            closeModal
-        );
-
-    }
-
-
-    if (modal) {
-
-        modal.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === modal
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       GALLERY
-       สร้างรูป 1.png - 11.png
-       ===================================================== */
-
-    const galleryGrid =
-        document.getElementById(
-            "galleryGrid"
-        );
-
-
-    if (galleryGrid) {
-
-        for (
-            let i = 1;
-            i <= 11;
-            i++
-        ) {
-
-            const card =
-                document.createElement(
-                    "article"
-                );
-
-            card.className =
-                "gallery-card reveal";
-
-
-            const imagePath =
-                `${imageFolder}/${i}.png`;
-
-
-            card.innerHTML = `
-
-                <span class="gallery-number">
-                    ${String(i).padStart(2, "0")}
-                </span>
-
-                <img
-                    src="${imagePath}"
-                    alt="ผลงาน Portfolio หน้า ${i}"
-                    loading="lazy"
-                >
-
-            `;
-
-
-            galleryGrid.appendChild(
-                card
-            );
-
-
-            const image =
-                card.querySelector(
-                    "img"
-                );
-
-
-            image.addEventListener(
-                "click",
-                () => {
-
-                    openModal(
-                        image.src,
-                        image.alt
-                    );
-
-                }
-            );
-
-
-            image.addEventListener(
-                "error",
-                () => {
-
-                    console.warn(
-                        "ไม่พบรูป:",
-                        imagePath
-                    );
-
-                }
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       รูปในส่วนอื่น ๆ
-       ===================================================== */
-
-    const contentImages =
-        document.querySelectorAll(
-            ".hero-card img, " +
-            ".transcript-image, " +
-            ".activity-card img, " +
-            ".certificate-card img, " +
-            ".sop-image img"
-        );
-
-
-    contentImages.forEach(
-        image => {
-
-            image.style.cursor =
-                "pointer";
-
-
-            image.addEventListener(
-                "click",
-                () => {
-
-                    openModal(
-                        image.src,
-                        image.alt ||
-                        "ผลงาน Portfolio"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       SCROLL REVEAL
-       ===================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".reveal"
-        );
-
-
-    if (
-        "IntersectionObserver"
-        in window
-    ) {
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target
-                                    .classList
-                                    .add("show");
-
-                                observer
-                                    .unobserve(
-                                        entry.target
-                                    );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.1
-                }
-            );
-
-
-        revealElements.forEach(
-            element => {
-
-                observer.observe(
-                    element
-                );
-
-            }
-        );
-
-    } else {
-
-        revealElements.forEach(
-            element => {
-
-                element.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-       ===================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
-
-    const navItems =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
-
-
-    if (
-        sections.length &&
-        navItems.length
-    ) {
-
-        const updateActiveNav =
-            () => {
-
-                let current = "";
-
-
-                sections.forEach(
-                    section => {
-
-                        const top =
-                            section.offsetTop
-                            - 160;
-
-
-                        if (
-                            window.scrollY
-                            >= top
-                        ) {
-
-                            current =
-                                section.id;
-
-                        }
-
-                    }
-                );
-
-
-                navItems.forEach(
-                    link => {
-
-                        link.classList
-                            .remove(
-                                "active"
-                            );
-
-
-                        if (
-                            link.getAttribute(
-                                "href"
-                            )
-                            ===
-                            `#${current}`
-                        ) {
-
-                            link.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    }
-                );
-
-            };
-
-
-        window.addEventListener(
-            "scroll",
-            updateActiveNav
-        );
-
-
-        updateActiveNav();
-
-    }
-
-
-    /* =====================================================
-       FINISHED
-       ===================================================== */
-
-    console.log(
-        "Portfolio พร้อมใช้งานแล้ว 💙"
-    );
 
 });
