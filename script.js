@@ -1,136 +1,66 @@
-/* =====================================================
+/* =========================================
    PORTFOLIO IMAGE SYSTEM
-   ระบบค้นหาโฟลเดอร์รูปอัตโนมัติ
-===================================================== */
-
-const USERNAME = "467002-rgb";
-const REPOSITORY = "myportforio";
-const BRANCH = "main";
+========================================= */
 
 
+/*
+ชื่อโฟลเดอร์รูปใน GitHub
+*/
 
-/* =====================================================
-   ค้นหาโฟลเดอร์รูปใน GitHub
-===================================================== */
-
-async function findImageFolder() {
-
-    const apiURL =
-        `https://api.github.com/repos/${USERNAME}/${REPOSITORY}/contents/?ref=${BRANCH}`;
-
-    try {
-
-        const response = await fetch(apiURL);
-
-        if (!response.ok) {
-            throw new Error("ไม่สามารถเชื่อมต่อ GitHub ได้");
-        }
-
-        const files = await response.json();
-
-        /*
-         ค้นหาโฟลเดอร์ที่มีคำว่า
-         แฟ้มสะสมผลงาน / Portfolio
-        */
-
-        const folder = files.find(item =>
-            item.type === "dir" &&
-            (
-                item.name.includes("แฟ้มสะสมผลงาน") ||
-                item.name.includes("Portfolio") ||
-                item.name.includes("พอร์ตโฟลิโอ")
-            )
-        );
+const imageFolder =
+    "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4";
 
 
-        if (!folder) {
+/*
+สร้าง URL ของรูป
+*/
 
-            console.error("ไม่พบโฟลเดอร์รูป");
+function getImageURL(number) {
 
-            showImageError();
+    const folder =
+        encodeURIComponent(imageFolder);
 
-            return null;
-        }
+    return `${folder}/${number}.png`;
 
-
-        return folder.name;
-
-    } catch (error) {
-
-        console.error(error);
-
-        showImageError();
-
-        return null;
-    }
 }
 
 
+/* =========================================
+   ใส่รูปให้ทุกตำแหน่ง
+========================================= */
 
-/* =====================================================
-   สร้าง URL รูป
-===================================================== */
-
-function createImageURL(folderName, number) {
-
-    const encodedFolder =
-        encodeURIComponent(folderName);
-
-    return `https://${USERNAME}.github.io/${REPOSITORY}/${encodedFolder}/${number}.png`;
-}
-
-
-
-/* =====================================================
-   ใส่รูปให้กับหน้าเว็บ
-===================================================== */
-
-async function loadPortfolioImages() {
-
-    const folderName = await findImageFolder();
-
-    if (!folderName) return;
-
-
-    /* รูปในส่วนต่าง ๆ */
+function loadImages() {
 
     const images =
-        document.querySelectorAll("[data-portfolio-image]");
+        document.querySelectorAll("[data-image-number]");
 
 
-    images.forEach(image => {
+    images.forEach(function (img) {
 
         const number =
-            image.getAttribute("data-portfolio-image");
+            img.getAttribute("data-image-number");
 
-        const imageURL =
-            createImageURL(folderName, number);
-
-        image.src = imageURL;
+        img.src =
+            getImageURL(number);
 
     });
 
 
+    /* =====================================
+       Gallery 1 - 11
+    ===================================== */
 
-    /* =================================================
-       สร้าง Gallery หน้า 1-11
-    ================================================= */
-
-    const galleryGrid =
+    const gallery =
         document.getElementById("galleryGrid");
 
 
-    if (!galleryGrid) return;
+    if (!gallery) return;
 
 
-    galleryGrid.innerHTML = "";
+    gallery.innerHTML = "";
 
 
     for (let i = 1; i <= 11; i++) {
-
-        const imageURL =
-            createImageURL(folderName, i);
-
 
         const item =
             document.createElement("div");
@@ -139,87 +69,60 @@ async function loadPortfolioImages() {
             "gallery-item";
 
 
-        item.innerHTML = `
+        const img =
+            document.createElement("img");
 
-            <img
-                src="${imageURL}"
-                alt="Portfolio หน้า ${i}"
-            >
+        img.src =
+            getImageURL(i);
 
-            <div class="gallery-number">
-                Portfolio หน้า ${i}
-            </div>
-
-        `;
+        img.alt =
+            `Portfolio หน้า ${i}`;
 
 
-        item.addEventListener("click", function () {
+        const number =
+            document.createElement("div");
 
-            openModal(imageURL);
+        number.className =
+            "gallery-number";
 
-        });
-
-
-        galleryGrid.appendChild(item);
-
-    }
-
-}
+        number.textContent =
+            `Portfolio หน้า ${i}`;
 
 
+        item.appendChild(img);
 
-/* =====================================================
-   ถ้ารูปโหลดไม่ได้
-===================================================== */
-
-function showImageError() {
-
-    const gallery =
-        document.getElementById("galleryGrid");
+        item.appendChild(number);
 
 
-    if (gallery) {
+        item.addEventListener(
+            "click",
+            function () {
 
-        gallery.innerHTML = `
+                openModal(img.src);
 
-            <div style="
-                width:100%;
-                text-align:center;
-                padding:30px;
-            ">
+            }
+        );
 
-                <h3>
-                    🥺 ยังโหลดรูปไม่ได้
-                </h3>
 
-                <p>
-                    กรุณารอสักครู่แล้วรีเฟรชหน้าเว็บ
-                </p>
-
-            </div>
-
-        `;
+        gallery.appendChild(item);
 
     }
 
 }
 
 
-
-/* =====================================================
+/* =========================================
    IMAGE MODAL
-===================================================== */
-
-const modal =
-    document.getElementById("imageModal");
-
-
-const modalImage =
-    document.getElementById("modalImage");
-
-
+========================================= */
 
 function openModal(src) {
+
+    const modal =
+        document.getElementById("imageModal");
+
+    const modalImage =
+        document.getElementById("modalImage");
+
 
     if (!modal || !modalImage) return;
 
@@ -228,13 +131,20 @@ function openModal(src) {
 
     modal.classList.add("active");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-
 function closeModal() {
+
+    const modal =
+        document.getElementById("imageModal");
+
+    const modalImage =
+        document.getElementById("modalImage");
+
 
     if (!modal || !modalImage) return;
 
@@ -243,19 +153,23 @@ function closeModal() {
 
     modalImage.src = "";
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 
 }
 
 
-
 /* คลิกพื้นหลังเพื่อปิด */
+
+const modal =
+    document.getElementById("imageModal");
+
 
 if (modal) {
 
     modal.addEventListener(
         "click",
-        function(event) {
+        function (event) {
 
             if (event.target === modal) {
 
@@ -269,12 +183,11 @@ if (modal) {
 }
 
 
-
-/* กด ESC เพื่อปิด */
+/* กด ESC */
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function (event) {
 
         if (event.key === "Escape") {
 
@@ -286,14 +199,12 @@ document.addEventListener(
 );
 
 
-
-/* =====================================================
+/* =========================================
    MOBILE MENU
-===================================================== */
+========================================= */
 
 const menuBtn =
     document.getElementById("menuBtn");
-
 
 const navMenu =
     document.getElementById("navMenu");
@@ -303,25 +214,29 @@ if (menuBtn && navMenu) {
 
     menuBtn.addEventListener(
         "click",
-        function() {
+        function () {
 
-            navMenu.classList.toggle("active");
+            navMenu.classList.toggle(
+                "active"
+            );
 
         }
     );
 
 
-    const navLinks =
+    const links =
         navMenu.querySelectorAll("a");
 
 
-    navLinks.forEach(link => {
+    links.forEach(function (link) {
 
         link.addEventListener(
             "click",
-            function() {
+            function () {
 
-                navMenu.classList.remove("active");
+                navMenu.classList.remove(
+                    "active"
+                );
 
             }
         );
@@ -331,16 +246,15 @@ if (menuBtn && navMenu) {
 }
 
 
-
-/* =====================================================
-   เริ่มระบบ
-===================================================== */
+/* =========================================
+   START
+========================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
-        loadPortfolioImages();
+        loadImages();
 
     }
 );
