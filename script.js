@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ใช้ encodeURIComponent เพื่อรองรับภาษาไทยและช่องว่าง
        ===================================================== */
     const folderName =
-        "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4";
+        "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน  พอร์ตโฟลิโอ Portfolio เอกสาร A4";
 
     const imageFolder =
         encodeURIComponent(folderName).replace(/%2F/g, "/");
