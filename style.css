@@ -1,7 +1,8 @@
 const galleryGrid = document.getElementById("galleryGrid");
 
-if (galleryGrid) {
+const imageFolder = "images";
 
+if (galleryGrid) {
     for (let i = 1; i <= 11; i++) {
 
         const item = document.createElement("div");
@@ -10,72 +11,74 @@ if (galleryGrid) {
 
         item.innerHTML = `
             <img
-                src="images/${i}.png"
+                src="${imageFolder}/${i}.png"
                 alt="Portfolio หน้า ${i}"
+                loading="lazy"
             >
-
             <div class="gallery-number">
                 Portfolio หน้า ${i}
             </div>
         `;
 
-        item.onclick = function () {
-            openModal(`images/${i}.png`);
-        };
+        item.addEventListener("click", function () {
+            openModal(`${imageFolder}/${i}.png`);
+        });
 
         galleryGrid.appendChild(item);
     }
 }
 
 
-// เปิดรูปใหญ่
+// ===============================
+// IMAGE MODAL
+// ===============================
+
 function openModal(src) {
 
     const modal = document.getElementById("imageModal");
     const modalImage = document.getElementById("modalImage");
 
-    modalImage.src = src;
+    if (!modal || !modalImage) return;
 
+    modalImage.src = src;
     modal.classList.add("active");
 
     document.body.style.overflow = "hidden";
 }
 
 
-// ปิดรูปใหญ่
 function closeModal() {
 
     const modal = document.getElementById("imageModal");
     const modalImage = document.getElementById("modalImage");
 
-    modal.classList.remove("active");
+    if (!modal || !modalImage) return;
 
+    modal.classList.remove("active");
     modalImage.src = "";
 
     document.body.style.overflow = "";
 }
 
 
-// คลิกพื้นหลังเพื่อปิด
+// คลิกพื้นหลังเพื่อปิดรูป
 const modal = document.getElementById("imageModal");
 
 if (modal) {
+    modal.addEventListener("click", function (event) {
 
-    modal.addEventListener("click", function (e) {
-
-        if (e.target === modal) {
+        if (event.target === modal) {
             closeModal();
         }
 
     });
-
 }
 
 
 // กด ESC เพื่อปิด
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", function (event) {
 
-    if (e.key === "Escape") {
+    if (event.key === "Escape") {
         closeModal();
     }
 
