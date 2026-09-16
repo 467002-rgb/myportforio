@@ -1,501 +1,406 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="Portfolio นายกษาปณ์ หัดกระสา">
     <title>Portfolio | นายกษาปณ์ หัดกระสา</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">PORTFOLIO</a>
 
-    <div class="nav-container">
+            <button id="menuBtn" class="menu-btn" aria-label="เปิดเมนู">
+                ☰
+            </button>
 
-        <a href="#home" class="logo">
-            PORTFOLIO
-        </a>
-
-        <button class="menu-btn" id="menuBtn">
-            ☰
-        </button>
-
-        <nav id="navMenu">
-
-            <a href="#home">หน้าแรก</a>
-            <a href="#profile">ประวัติ</a>
-            <a href="#education">การศึกษา</a>
-            <a href="#activities">กิจกรรม</a>
-            <a href="#certificates">เกียรติบัตร</a>
-            <a href="#sop">SOP</a>
-            <a href="#gallery">ผลงาน</a>
-
-        </nav>
-
-    </div>
-
-</header>
+            <nav>
+                <ul id="navLinks" class="nav-links">
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#profile">ประวัติ</a></li>
+                    <li><a href="#education">การศึกษา</a></li>
+                    <li><a href="#activities">กิจกรรม</a></li>
+                    <li><a href="#certificates">เกียรติบัตร</a></li>
+                    <li><a href="#sop">SOP</a></li>
+                    <li><a href="#gallery">ผลงาน</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
 
-<!-- HERO -->
-<section id="home" class="hero">
+    <!-- ================= HERO ================= -->
+    <main>
 
-    <div class="hero-content">
+        <section id="home" class="hero">
+            <div class="container hero-content">
 
-        <div class="hero-text">
+                <div class="hero-text">
+                    <div class="hero-badge">ENGINEERING PORTFOLIO</div>
 
-            <p class="small-title">
-                ENGINEERING PORTFOLIO
-            </p>
+                    <h1>
+                        นายกษาปณ์<br>
+                        <span>หัดกระสา</span>
+                    </h1>
 
-            <h1>
-                นายกษาปณ์<br>
-                <span>หัดกระสา</span>
-            </h1>
+                    <p class="hero-subtitle">
+                        นักเรียนแผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
+                    </p>
 
-            <p class="description">
-                นักเรียนแผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
-            </p>
+                    <p class="hero-target">
+                        โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
+                        <br>
+                        เป้าหมายการศึกษา:
+                        <strong>คณะวิศวกรรมศาสตร์ สาขาวิศวกรรมอุตสาหการ</strong>
+                    </p>
 
-            <p class="school">
-                โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
-            </p>
+                    <div class="hero-buttons">
+                        <a href="#profile" class="btn btn-primary">รู้จักฉัน</a>
+                        <a href="#gallery" class="btn btn-outline">ดูผลงาน</a>
+                    </div>
+                </div>
 
-            <div class="target-box">
-
-                🎯 เป้าหมายการศึกษา
-
-                <strong>
-                    คณะวิศวกรรมศาสตร์<br>
-                    สาขาวิศวกรรมอุตสาหการ
-                </strong>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/1.png"
+                            alt="Portfolio หน้า 1"
+                        >
+                    </div>
+                </div>
 
             </div>
+        </section>
 
-            <div class="hero-buttons">
 
-                <a href="#profile" class="btn primary">
-                    รู้จักฉัน
-                </a>
+        <!-- ================= PROFILE ================= -->
+        <section id="profile" class="profile">
+            <div class="container">
 
-                <a href="#gallery" class="btn secondary">
-                    ดูผลงาน
-                </a>
+                <div class="section-title">
+                    <h2>Profile</h2>
+                    <p>ประวัติและข้อมูลส่วนตัว</p>
+                    <div class="line"></div>
+                </div>
+
+                <div class="profile-grid">
+
+                    <div class="profile-card">
+                        <h3>เกี่ยวกับฉัน</h3>
+                        <p>
+                            ผมเป็นนักเรียนที่สนใจด้านวิทยาศาสตร์ คณิตศาสตร์
+                            และการแก้ปัญหาอย่างเป็นระบบ โดยมีความสนใจ
+                            ในศาสตร์ทางวิศวกรรมและต้องการพัฒนาความรู้
+                            เพื่อนำไปต่อยอดในการศึกษาระดับมหาวิทยาลัย
+                        </p>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>ข้อมูลการศึกษา</h3>
+
+                        <div class="profile-info">
+
+                            <div class="info-row">
+                                <span class="info-label">ชื่อ</span>
+                                <span class="info-value">นายกษาปณ์ หัดกระสา</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">โรงเรียน</span>
+                                <span class="info-value">
+                                    กระทุ่มแบน “วิเศษสมุทคุณ”
+                                </span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">แผนการเรียน</span>
+                                <span class="info-value">
+                                    วิทยาศาสตร์-คณิตศาสตร์
+                                </span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">มหาวิทยาลัยที่สนใจ</span>
+                                <span class="info-value">มหาวิทยาลัยศิลปากร</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">คณะ</span>
+                                <span class="info-value">วิศวกรรมศาสตร์</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">สาขา</span>
+                                <span class="info-value">
+                                    วิศวกรรมอุตสาหการ
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= EDUCATION ================= -->
+        <section id="education" class="transcript">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Education</h2>
+                    <p>ประวัติการศึกษาและเอกสารประกอบ</p>
+                    <div class="line"></div>
+                </div>
+
+                <div class="transcript-card">
+                    <div class="education-box">
+                        <div class="education-icon">🎓</div>
+                        <div>
+                            <h3>แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์</h3>
+                            <p>
+                                โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="hint">
+                        คลิกที่ภาพเพื่อดูเอกสารขนาดใหญ่
+                    </p>
+
+                    <img
+                        class="transcript-image"
+                        src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/2.png"
+                        alt="เอกสารการศึกษา Portfolio หน้า 2"
+                    >
+                </div>
 
             </div>
-
-        </div>
-
-
-        <div class="hero-image">
-
-            <img
-                data-image-number="1"
-                alt="Portfolio หน้า 1"
-                onclick="openModal(this.src)"
-            >
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- PROFILE -->
-<section id="profile" class="section">
+        <!-- ================= ACTIVITIES ================= -->
+        <section id="activities" class="activities">
+            <div class="container">
 
-    <div class="section-title">
+                <div class="section-title">
+                    <h2>Activities</h2>
+                    <p>กิจกรรมและประสบการณ์</p>
+                    <div class="line"></div>
+                </div>
 
-        <span>PROFILE</span>
+                <div class="activities-grid">
 
-        <h2>
-            ประวัติและข้อมูลส่วนตัว
-        </h2>
+                    <article class="activity-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/3.png"
+                            alt="กิจกรรม Portfolio หน้า 3"
+                        >
+                        <div class="activity-content">
+                            <h3>กิจกรรมและประสบการณ์</h3>
+                            <p>
+                                ประสบการณ์ที่สะท้อนการเรียนรู้ การทำงาน
+                                และการพัฒนาตนเอง
+                            </p>
+                        </div>
+                    </article>
 
-    </div>
+                    <article class="activity-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/4.png"
+                            alt="กิจกรรม Portfolio หน้า 4"
+                        >
+                        <div class="activity-content">
+                            <h3>การเรียนรู้จากกิจกรรม</h3>
+                            <p>
+                                ฝึกการทำงานร่วมกับผู้อื่น
+                                การสื่อสาร และการแก้ปัญหา
+                            </p>
+                        </div>
+                    </article>
 
+                    <article class="activity-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/5.png"
+                            alt="กิจกรรม Portfolio หน้า 5"
+                        >
+                        <div class="activity-content">
+                            <h3>ประสบการณ์ที่น่าภาคภูมิใจ</h3>
+                            <p>
+                                รวบรวมผลงานและประสบการณ์สำคัญ
+                                ที่แสดงถึงความตั้งใจและความรับผิดชอบ
+                            </p>
+                        </div>
+                    </article>
 
-    <div class="profile-grid">
-
-        <div class="card">
-
-            <h3>👨‍🎓 เกี่ยวกับฉัน</h3>
-
-            <p>
-                ผมเป็นนักเรียนที่สนใจด้านวิทยาศาสตร์ คณิตศาสตร์
-                และการแก้ปัญหาอย่างเป็นระบบ โดยมีความสนใจในศาสตร์
-                ทางวิศวกรรม และต้องการพัฒนาความรู้เพื่อนำไปต่อยอด
-                ในการศึกษาระดับมหาวิทยาลัย
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>📚 ข้อมูลการศึกษา</h3>
-
-            <div class="info">
-
-                <p>
-                    <strong>ชื่อ</strong>
-                    นายกษาปณ์ หัดกระสา
-                </p>
-
-                <p>
-                    <strong>โรงเรียน</strong>
-                    กระทุ่มแบน “วิเศษสมุทคุณ”
-                </p>
-
-                <p>
-                    <strong>แผนการเรียน</strong>
-                    วิทยาศาสตร์-คณิตศาสตร์
-                </p>
-
-                <p>
-                    <strong>มหาวิทยาลัยที่สนใจ</strong>
-                    มหาวิทยาลัยศิลปากร
-                </p>
-
-                <p>
-                    <strong>คณะ</strong>
-                    วิศวกรรมศาสตร์
-                </p>
-
-                <p>
-                    <strong>สาขา</strong>
-                    วิศวกรรมอุตสาหการ
-                </p>
+                </div>
 
             </div>
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- EDUCATION -->
-<section id="education" class="section light">
+        <!-- ================= CERTIFICATES ================= -->
+        <section id="certificates" class="certificates">
+            <div class="container">
 
-    <div class="section-title">
+                <div class="section-title">
+                    <h2>Certificates</h2>
+                    <p>เกียรติบัตรและผลงานที่ได้รับ</p>
+                    <div class="line"></div>
+                </div>
 
-        <span>EDUCATION</span>
+                <div class="certificates-grid">
 
-        <h2>
-            ประวัติการศึกษาและเอกสารประกอบ
-        </h2>
+                    <article class="certificate-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/6.png"
+                            alt="เกียรติบัตร Portfolio หน้า 6"
+                        >
+                        <div class="certificate-content">
+                            <h3>Certificate 01</h3>
+                            <p>เกียรติบัตรและหลักฐานการเข้าร่วมกิจกรรม</p>
+                        </div>
+                    </article>
 
-    </div>
+                    <article class="certificate-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/7.png"
+                            alt="เกียรติบัตร Portfolio หน้า 7"
+                        >
+                        <div class="certificate-content">
+                            <h3>Certificate 02</h3>
+                            <p>เกียรติบัตรและผลงานที่รวบรวมไว้ใน Portfolio</p>
+                        </div>
+                    </article>
 
+                    <article class="certificate-card reveal">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/8.png"
+                            alt="เกียรติบัตร Portfolio หน้า 8"
+                        >
+                        <div class="certificate-content">
+                            <h3>Certificate 03</h3>
+                            <p>ผลงานและกิจกรรมที่แสดงถึงการพัฒนาตนเอง</p>
+                        </div>
+                    </article>
 
-    <div class="education-card">
+                </div>
 
-        <div class="education-text">
-
-            <div class="icon">
-                🎓
             </div>
+        </section>
 
-            <h3>
-                แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
-            </h3>
 
+        <!-- ================= SOP ================= -->
+        <section id="sop" class="sop">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Statement of Purpose</h2>
+                    <p>เหตุผลและเป้าหมายในการศึกษาต่อ</p>
+                    <div class="line"></div>
+                </div>
+
+                <div class="sop-card">
+
+                    <div class="sop-image">
+                        <img
+                            src="สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4/9.png"
+                            alt="Statement of Purpose Portfolio หน้า 9"
+                        >
+                    </div>
+
+                    <div class="sop-text">
+                        <h3>เป้าหมายของผม</h3>
+
+                        <p>
+                            ผมมีความสนใจในด้านวิศวกรรม เพราะเป็นศาสตร์ที่นำ
+                            ความรู้ทางวิทยาศาสตร์และคณิตศาสตร์มาประยุกต์ใช้
+                            เพื่อแก้ไขปัญหาในชีวิตจริง
+                        </p>
+
+                        <p>
+                            วิศวกรรมอุตสาหการเป็นสาขาที่เกี่ยวข้องกับการวางแผน
+                            การจัดการกระบวนการ การเพิ่มประสิทธิภาพ และการแก้ปัญหา
+                            อย่างเป็นระบบ ซึ่งสอดคล้องกับความสนใจและเป้าหมาย
+                            ในการพัฒนาตนเองของผม
+                        </p>
+
+                        <p>
+                            ผมจึงต้องการศึกษาต่อในคณะวิศวกรรมศาสตร์
+                            สาขาวิศวกรรมอุตสาหการ เพื่อพัฒนาความรู้
+                            ทักษะการคิดวิเคราะห์ และนำไปประยุกต์ใช้
+                            ในการทำงานในอนาคต
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= GALLERY ================= -->
+        <section id="gallery" class="gallery">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Portfolio Gallery</h2>
+                    <p>รวมผลงาน Portfolio ทั้ง 11 หน้า</p>
+                    <div class="line"></div>
+                </div>
+
+                <div id="galleryGrid" class="gallery-grid"></div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container">
+            <p class="footer-name">
+                นายกษาปณ์ หัดกระสา
+            </p>
             <p>
-                โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
+                Portfolio | Engineering
             </p>
-
-            <p class="hint">
-                คลิกที่ภาพเพื่อดูเอกสารขนาดใหญ่
-            </p>
-
         </div>
+    </footer>
 
 
-        <img
-            data-image-number="2"
-            alt="Portfolio หน้า 2"
-            onclick="openModal(this.src)"
-        >
+    <!-- ================= IMAGE MODAL ================= -->
+    <div id="imageModal" class="modal" aria-hidden="true">
 
-    </div>
+        <div class="modal-content">
 
-</section>
-
-
-<!-- ACTIVITIES -->
-<section id="activities" class="section">
-
-    <div class="section-title">
-
-        <span>ACTIVITIES</span>
-
-        <h2>
-            กิจกรรมและประสบการณ์
-        </h2>
-
-    </div>
-
-
-    <div class="activity-intro">
-
-        <p>
-            ประสบการณ์ที่สะท้อนการเรียนรู้ การทำงาน
-            และการพัฒนาตนเอง
-        </p>
-
-    </div>
-
-
-    <div class="portfolio-grid">
-
-        <div class="portfolio-card">
+            <button
+                id="modalClose"
+                class="modal-close"
+                aria-label="ปิดรูปภาพ"
+            >
+                ×
+            </button>
 
             <img
-                data-image-number="3"
-                alt="Portfolio หน้า 3"
-                onclick="openModal(this.src)"
+                id="modalImage"
+                src=""
+                alt="ภาพขนาดใหญ่"
             >
-
-            <h3>
-                กิจกรรมและประสบการณ์
-            </h3>
-
-            <p>
-                ประสบการณ์ที่สะท้อนการเรียนรู้
-                การทำงาน และการพัฒนาตนเอง
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-card">
-
-            <img
-                data-image-number="4"
-                alt="Portfolio หน้า 4"
-                onclick="openModal(this.src)"
-            >
-
-            <h3>
-                การเรียนรู้จากกิจกรรม
-            </h3>
-
-            <p>
-                ฝึกการทำงานร่วมกับผู้อื่น
-                การสื่อสาร และการแก้ปัญหา
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-card">
-
-            <img
-                data-image-number="5"
-                alt="Portfolio หน้า 5"
-                onclick="openModal(this.src)"
-            >
-
-            <h3>
-                ประสบการณ์ที่น่าภาคภูมิใจ
-            </h3>
-
-            <p>
-                รวบรวมผลงานและประสบการณ์สำคัญ
-                ที่แสดงถึงความตั้งใจและความรับผิดชอบ
-            </p>
 
         </div>
 
     </div>
 
-</section>
 
-
-<!-- CERTIFICATES -->
-<section id="certificates" class="section light">
-
-    <div class="section-title">
-
-        <span>CERTIFICATES</span>
-
-        <h2>
-            เกียรติบัตรและผลงานที่ได้รับ
-        </h2>
-
-    </div>
-
-
-    <div class="portfolio-grid">
-
-        <div class="portfolio-card">
-
-            <img
-                data-image-number="6"
-                alt="Portfolio หน้า 6"
-                onclick="openModal(this.src)"
-            >
-
-            <h3>
-                เกียรติบัตร
-            </h3>
-
-            <p>
-                ผลงานและกิจกรรมที่ได้รับการรับรอง
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-card">
-
-            <img
-                data-image-number="7"
-                alt="Portfolio หน้า 7"
-                onclick="openModal(this.src)"
-            >
-
-            <h3>
-                ผลงานและรางวัล
-            </h3>
-
-            <p>
-                ประสบการณ์ที่สะท้อนความสามารถ
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-card">
-
-            <img
-                data-image-number="8"
-                alt="Portfolio หน้า 8"
-                onclick="openModal(this.src)"
-            >
-
-            <h3>
-                กิจกรรมและผลงาน
-            </h3>
-
-            <p>
-                การเรียนรู้จากประสบการณ์จริง
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SOP -->
-<section id="sop" class="section">
-
-    <div class="section-title">
-
-        <span>STATEMENT OF PURPOSE</span>
-
-        <h2>
-            เหตุผลและเป้าหมายในการศึกษาต่อ
-        </h2>
-
-    </div>
-
-
-    <div class="sop-card">
-
-        <h3>
-            เป้าหมายของผม
-        </h3>
-
-        <p>
-            ผมมีความสนใจในด้านวิศวกรรม เพราะเป็นศาสตร์ที่นำความรู้
-            ทางวิทยาศาสตร์และคณิตศาสตร์มาประยุกต์ใช้
-            เพื่อแก้ไขปัญหาในชีวิตจริง
-        </p>
-
-        <p>
-            วิศวกรรมอุตสาหการเป็นสาขาที่เกี่ยวข้องกับการวางแผน
-            การจัดการกระบวนการ การเพิ่มประสิทธิภาพ
-            และการแก้ปัญหาอย่างเป็นระบบ
-        </p>
-
-        <p>
-            ผมจึงต้องการศึกษาต่อในคณะวิศวกรรมศาสตร์
-            สาขาวิศวกรรมอุตสาหการ เพื่อพัฒนาความรู้
-            และทักษะการคิดวิเคราะห์ เพื่อนำไปประยุกต์ใช้
-            ในการทำงานในอนาคต
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- GALLERY -->
-<section id="gallery" class="section light">
-
-    <div class="section-title">
-
-        <span>PORTFOLIO GALLERY</span>
-
-        <h2>
-            ผลงานทั้งหมด
-        </h2>
-
-    </div>
-
-
-    <div id="galleryGrid" class="gallery-grid"></div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-    <p>
-        © 2026 Portfolio | นายกษาปณ์ หัดกระสา
-    </p>
-
-    <p>
-        โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
-    </p>
-
-</footer>
-
-
-<!-- MODAL -->
-<div id="imageModal" class="image-modal">
-
-    <button
-        class="modal-close"
-        onclick="closeModal()"
-    >
-        ×
-    </button>
-
-    <img id="modalImage" alt="Portfolio">
-
-</div>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
