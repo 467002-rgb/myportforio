@@ -1,85 +1,42 @@
-// ========================================
-// MOBILE MENU
-// ========================================
-
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-
-if (menuBtn) {
-    menuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-    });
-}
-
-
-// ปิดเมนูเมื่อกดลิงก์
-document.querySelectorAll("#navMenu a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navMenu.classList.remove("active");
-
-    });
-
-});
-
-
-
-// ========================================
-// PORTFOLIO GALLERY
-// ========================================
-
-const galleryGrid =
-    document.getElementById("galleryGrid");
+const galleryGrid = document.getElementById("galleryGrid");
 
 const imageFolder = "images";
 
+if (galleryGrid) {
+    for (let i = 1; i <= 11; i++) {
 
-// สร้างรูปทั้งหมด 11 หน้า
-for (let i = 1; i <= 11; i++) {
+        const item = document.createElement("div");
 
-    const item = document.createElement("div");
+        item.className = "gallery-item";
 
-    item.className = "gallery-item";
+        item.innerHTML = `
+            <img
+                src="${imageFolder}/${i}.png"
+                alt="Portfolio หน้า ${i}"
+            >
 
-    item.innerHTML = `
-        <img
-            src="${imageFolder}/${i}.png"
-            alt="Portfolio หน้า ${i}"
-            loading="lazy"
-        >
+            <div class="gallery-number">
+                Portfolio หน้า ${i}
+            </div>
+        `;
 
-        <div class="gallery-number">
-            Portfolio หน้า ${i}
-        </div>
-    `;
+        item.addEventListener("click", function () {
+            openModal(`${imageFolder}/${i}.png`);
+        });
 
-    item.addEventListener("click", () => {
-
-        openModal(`${imageFolder}/${i}.png`);
-
-    });
-
-    galleryGrid.appendChild(item);
+        galleryGrid.appendChild(item);
+    }
 }
 
 
-
-// ========================================
-// IMAGE MODAL
-// ========================================
-
-const modal =
-    document.getElementById("imageModal");
-
-const modalImage =
-    document.getElementById("modalImage");
+const modal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
 
 
-function openModal(imageSrc) {
+function openModal(src) {
+    if (!modal || !modalImage) return;
 
-    modalImage.src = imageSrc;
-
+    modalImage.src = src;
     modal.classList.add("active");
 
     document.body.style.overflow = "hidden";
@@ -87,36 +44,30 @@ function openModal(imageSrc) {
 
 
 function closeModal() {
+    if (!modal || !modalImage) return;
 
     modal.classList.remove("active");
-
     modalImage.src = "";
 
     document.body.style.overflow = "";
 }
 
 
+if (modal) {
+    modal.addEventListener("click", function (event) {
 
-// คลิกพื้นหลังเพื่อปิด
-modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
 
-    if (event.target === modal) {
-
-        closeModal();
-
-    }
-
-});
+    });
+}
 
 
-
-// กด ESC เพื่อปิดรูป
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", function (event) {
 
     if (event.key === "Escape") {
-
         closeModal();
-
     }
 
 });
