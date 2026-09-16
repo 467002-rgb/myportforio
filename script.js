@@ -1,209 +1,167 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ================= MOBILE MENU =================
 
-    /* =====================================================
-       โฟลเดอร์รูปจริงใน GitHub
-       ใช้ encodeURIComponent เพื่อรองรับภาษาไทยและช่องว่าง
-       ===================================================== */
-    const folderName =
-    "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน  พอร์ตโฟลิโอ Portfolio เอกสาร A4";
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
+if (menuBtn && navMenu) {
+
+    menuBtn.addEventListener("click", function () {
+
+        navMenu.classList.toggle("active");
+
+    });
+
+}
+
+
+// ================= CLOSE MOBILE MENU =================
+
+if (navMenu) {
+
+    const navLinks = navMenu.querySelectorAll("a");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navMenu.classList.remove("active");
+
+        });
+
+    });
+
+}
+
+
+// ================= PORTFOLIO GALLERY =================
+
+const galleryGrid =
+    document.getElementById("galleryGrid");
+
+
+// ชื่อโฟลเดอร์รูปจริงใน GitHub
 const imageFolder =
-    encodeURIComponent(folderName).replace(/%2F/g, "/");
+    "สีแดงเข้ม โมเดิร์น แฟ้มสะสมผลงาน พอร์ตโฟลิโอ Portfolio เอกสาร A4";
 
 
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+if (galleryGrid) {
 
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener("click", () => {
-            const opened = navLinks.classList.toggle("open");
+    for (let i = 1; i <= 11; i++) {
 
-            menuBtn.textContent = opened ? "✕" : "☰";
-            menuBtn.setAttribute(
-                "aria-label",
-                opened ? "ปิดเมนู" : "เปิดเมนู"
-            );
-        });
+        const item =
+            document.createElement("div");
 
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("open");
-                menuBtn.textContent = "☰";
-                menuBtn.setAttribute("aria-label", "เปิดเมนู");
-            });
-        });
-    }
+        item.className =
+            "gallery-item";
 
 
-    /* =====================================================
-       IMAGE MODAL
-       ===================================================== */
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalClose = document.getElementById("modalClose");
+        item.innerHTML = `
 
-    function openModal(src, alt = "ผลงาน Portfolio") {
-        if (!modal || !modalImage) return;
+            <img
+                src="${imageFolder}/${i}.png"
+                alt="Portfolio หน้า ${i}"
+            >
 
-        modalImage.src = src;
-        modalImage.alt = alt;
-        modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
+            <div class="gallery-number">
+                Portfolio หน้า ${i}
+            </div>
 
-        document.body.style.overflow = "hidden";
-    }
+        `;
 
-    function closeModal() {
-        if (!modal) return;
 
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-    }
+        item.addEventListener(
+            "click",
+            function () {
 
-    if (modalClose) {
-        modalClose.addEventListener("click", closeModal);
-    }
+                openModal(
+                    `${imageFolder}/${i}.png`
+                );
 
-    if (modal) {
-        modal.addEventListener("click", event => {
-            if (event.target === modal) {
-                closeModal();
             }
-        });
-    }
-
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape") {
-            closeModal();
-        }
-    });
-
-
-    /* =====================================================
-       GALLERY 1.png - 11.png
-       ===================================================== */
-    const galleryGrid = document.getElementById("galleryGrid");
-
-    if (galleryGrid) {
-        for (let i = 1; i <= 11; i++) {
-
-            const card = document.createElement("article");
-            card.className = "gallery-card reveal";
-
-            const src = `${imageFolder}/${i}.png`;
-
-            card.innerHTML = `
-                <span class="gallery-number">
-                    ${String(i).padStart(2, "0")}
-                </span>
-
-                <img
-                    src="${src}"
-                    alt="ผลงาน Portfolio หน้า ${i}"
-                    loading="lazy"
-                >
-            `;
-
-            galleryGrid.appendChild(card);
-
-            const img = card.querySelector("img");
-
-            img.addEventListener("click", () => {
-                openModal(img.src, img.alt);
-            });
-
-            img.addEventListener("error", () => {
-                card.classList.add("image-missing");
-                console.warn("ไม่พบรูป:", src);
-            });
-        }
-    }
-
-
-    /* =====================================================
-       รูปที่อยู่ในเนื้อหาหลัก
-       ===================================================== */
-    const contentImages = document.querySelectorAll(
-        ".hero-card img, " +
-        ".transcript-image, " +
-        ".activity-card img, " +
-        ".certificate-card img, " +
-        ".sop-image img"
-    );
-
-    contentImages.forEach(img => {
-        img.style.cursor = "pointer";
-
-        img.addEventListener("click", () => {
-            openModal(img.src, img.alt);
-        });
-    });
-
-
-    /* =====================================================
-       SCROLL REVEAL
-       ===================================================== */
-    const revealElements = document.querySelectorAll(".reveal");
-
-    if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.1 }
         );
 
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
-    } else {
-        revealElements.forEach(element => {
-            element.classList.add("show");
-        });
+
+        galleryGrid.appendChild(item);
+
+    }
+
+}
+
+
+// ================= IMAGE MODAL =================
+
+const modal =
+    document.getElementById("imageModal");
+
+const modalImage =
+    document.getElementById("modalImage");
+
+
+function openModal(src) {
+
+    if (!modal || !modalImage) {
+        return;
     }
 
 
-    /* =====================================================
-       ACTIVE NAV
-       ===================================================== */
-    const sections = document.querySelectorAll("section[id]");
-    const navItems = document.querySelectorAll(".nav-links a");
+    modalImage.src = src;
 
-    if (sections.length && navItems.length) {
+    modal.classList.add("active");
 
-        const updateActiveNav = () => {
-            let current = "";
+    document.body.style.overflow =
+        "hidden";
 
-            sections.forEach(section => {
-                const top = section.offsetTop - 160;
+}
 
-                if (window.scrollY >= top) {
-                    current = section.id;
-                }
-            });
 
-            navItems.forEach(link => {
-                link.classList.remove("active");
+function closeModal() {
 
-                if (link.getAttribute("href") === `#${current}`) {
-                    link.classList.add("active");
-                }
-            });
-        };
-
-        window.addEventListener("scroll", updateActiveNav);
-        updateActiveNav();
+    if (!modal || !modalImage) {
+        return;
     }
 
 
-    console.log("Portfolio พร้อมใช้งานแล้ว 💙");
-});
+    modal.classList.remove("active");
+
+    modalImage.src = "";
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+// ================= CLOSE MODAL WHEN CLICK OUTSIDE =================
+
+if (modal) {
+
+    modal.addEventListener(
+        "click",
+        function (event) {
+
+            if (event.target === modal) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ================= ESC KEY =================
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeModal();
+
+        }
+
+    }
+);
