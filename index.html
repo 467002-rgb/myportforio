@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -20,6 +23,7 @@
 <!-- ================= NAVBAR ================= -->
 
 <header class="navbar">
+
     <div class="nav-container">
 
         <a href="#home" class="logo">
@@ -31,6 +35,7 @@
         </button>
 
         <nav id="navMenu">
+
             <a href="#home">หน้าแรก</a>
             <a href="#profile">ประวัติ</a>
             <a href="#education">การศึกษา</a>
@@ -38,9 +43,11 @@
             <a href="#certificates">เกียรติบัตร</a>
             <a href="#sop">SOP</a>
             <a href="#gallery">ผลงาน</a>
+
         </nav>
 
     </div>
+
 </header>
 
 
@@ -70,14 +77,20 @@
             </p>
 
             <div class="target-box">
-                🎯 เป้าหมายการศึกษา<br>
+
+                🎯 เป้าหมายการศึกษา
+
+                <br>
+
                 <strong>
                     คณะวิศวกรรมศาสตร์<br>
                     สาขาวิศวกรรมอุตสาหการ
                 </strong>
+
             </div>
 
             <div class="hero-buttons">
+
                 <a href="#profile" class="btn primary">
                     รู้จักฉัน
                 </a>
@@ -85,6 +98,7 @@
                 <a href="#gallery" class="btn secondary">
                     ดูผลงาน
                 </a>
+
             </div>
 
         </div>
@@ -93,7 +107,7 @@
         <div class="hero-image">
 
             <img
-                src="images/1.png"
+                data-portfolio-image="1"
                 alt="Portfolio หน้า 1"
                 class="portfolio-img"
                 onclick="openModal(this.src)"
@@ -145,32 +159,32 @@
             <div class="info">
 
                 <p>
-                    <strong>ชื่อ</strong>
+                    <strong>ชื่อ</strong><br>
                     นายกษาปณ์ หัดกระสา
                 </p>
 
                 <p>
-                    <strong>โรงเรียน</strong>
+                    <strong>โรงเรียน</strong><br>
                     กระทุ่มแบน “วิเศษสมุทคุณ”
                 </p>
 
                 <p>
-                    <strong>แผนการเรียน</strong>
+                    <strong>แผนการเรียน</strong><br>
                     วิทยาศาสตร์-คณิตศาสตร์
                 </p>
 
                 <p>
-                    <strong>มหาวิทยาลัยที่สนใจ</strong>
+                    <strong>มหาวิทยาลัยที่สนใจ</strong><br>
                     มหาวิทยาลัยศิลปากร
                 </p>
 
                 <p>
-                    <strong>คณะ</strong>
+                    <strong>คณะ</strong><br>
                     วิศวกรรมศาสตร์
                 </p>
 
                 <p>
-                    <strong>สาขา</strong>
+                    <strong>สาขา</strong><br>
                     วิศวกรรมอุตสาหการ
                 </p>
 
@@ -223,7 +237,7 @@
 
 
         <img
-            src="images/2.png"
+            data-portfolio-image="2"
             alt="เอกสารการศึกษา Portfolio หน้า 2"
             onclick="openModal(this.src)"
         >
@@ -264,7 +278,7 @@
         <div class="portfolio-card">
 
             <img
-                src="images/3.png"
+                data-portfolio-image="3"
                 alt="กิจกรรม Portfolio หน้า 3"
                 onclick="openModal(this.src)"
             >
@@ -284,7 +298,7 @@
         <div class="portfolio-card">
 
             <img
-                src="images/4.png"
+                data-portfolio-image="4"
                 alt="กิจกรรม Portfolio หน้า 4"
                 onclick="openModal(this.src)"
             >
@@ -304,7 +318,7 @@
         <div class="portfolio-card">
 
             <img
-                src="images/5.png"
+                data-portfolio-image="5"
                 alt="กิจกรรม Portfolio หน้า 5"
                 onclick="openModal(this.src)"
             >
@@ -346,18 +360,17 @@
         <div class="portfolio-card">
 
             <img
-                src="images/6.png"
+                data-portfolio-image="6"
                 alt="เกียรติบัตร Portfolio หน้า 6"
                 onclick="openModal(this.src)"
             >
 
             <h3>
-                Certificate 01
+                เกียรติบัตร
             </h3>
 
             <p>
-                เกียรติบัตรและหลักฐาน
-                การเข้าร่วมกิจกรรม
+                ผลงานและกิจกรรมที่ได้รับการรับรอง
             </p>
 
         </div>
@@ -366,18 +379,17 @@
         <div class="portfolio-card">
 
             <img
-                src="images/7.png"
+                data-portfolio-image="7"
                 alt="เกียรติบัตร Portfolio หน้า 7"
                 onclick="openModal(this.src)"
             >
 
             <h3>
-                Certificate 02
+                ผลงานและรางวัล
             </h3>
 
             <p>
-                เกียรติบัตรและผลงาน
-                ที่รวบรวมไว้ใน Portfolio
+                ประสบการณ์ที่สะท้อนความสามารถ
             </p>
 
         </div>
@@ -386,18 +398,17 @@
         <div class="portfolio-card">
 
             <img
-                src="images/8.png"
+                data-portfolio-image="8"
                 alt="เกียรติบัตร Portfolio หน้า 8"
                 onclick="openModal(this.src)"
             >
 
             <h3>
-                Certificate 03
+                กิจกรรมและผลงาน
             </h3>
 
             <p>
-                ผลงานและกิจกรรม
-                ที่แสดงถึงการพัฒนาตนเอง
+                การเรียนรู้จากประสบการณ์จริง
             </p>
 
         </div>
@@ -417,51 +428,31 @@
         <span>STATEMENT OF PURPOSE</span>
 
         <h2>
-            เหตุผลและเป้าหมายในการศึกษาต่อ
+            SOP
         </h2>
 
     </div>
 
 
-    <div class="sop-grid">
+    <div class="sop-card">
 
-        <div class="sop-image">
+        <h3>
+            เหตุผลที่สนใจศึกษาต่อด้านวิศวกรรม
+        </h3>
 
-            <img
-                src="images/9.png"
-                alt="Statement of Purpose Portfolio หน้า 9"
-                onclick="openModal(this.src)"
-            >
+        <p>
+            ผมมีความสนใจด้านวิทยาศาสตร์และคณิตศาสตร์
+            และชื่นชอบการคิดวิเคราะห์อย่างเป็นระบบ
+            จึงมีความสนใจศึกษาต่อในสายวิศวกรรมศาสตร์
+            โดยเฉพาะสาขาวิศวกรรมอุตสาหการ
+        </p>
 
-        </div>
-
-
-        <div class="sop-text">
-
-            <h3>
-                🎯 เป้าหมายของผม
-            </h3>
-
-            <p>
-                ผมมีความสนใจในด้านวิศวกรรม เพราะเป็นศาสตร์
-                ที่นำความรู้ทางวิทยาศาสตร์และคณิตศาสตร์
-                มาประยุกต์ใช้เพื่อแก้ไขปัญหาในชีวิตจริง
-            </p>
-
-            <p>
-                วิศวกรรมอุตสาหการเป็นสาขาที่เกี่ยวข้องกับ
-                การวางแผน การจัดการกระบวนการ การเพิ่มประสิทธิภาพ
-                และการแก้ปัญหาอย่างเป็นระบบ
-            </p>
-
-            <p>
-                ผมจึงต้องการศึกษาต่อในคณะวิศวกรรมศาสตร์
-                สาขาวิศวกรรมอุตสาหการ เพื่อพัฒนาความรู้
-                ทักษะการคิดวิเคราะห์ และนำไปประยุกต์ใช้
-                ในการทำงานในอนาคต
-            </p>
-
-        </div>
+        <p>
+            ผมต้องการพัฒนาความรู้และทักษะด้านการวางแผน
+            การจัดการกระบวนการ และการแก้ไขปัญหา
+            เพื่อนำความรู้ไปประยุกต์ใช้ในการเรียน
+            และการทำงานในอนาคต
+        </p>
 
     </div>
 
@@ -471,14 +462,14 @@
 
 <!-- ================= GALLERY ================= -->
 
-<section id="gallery" class="section gallery-section">
+<section id="gallery" class="section light">
 
     <div class="section-title">
 
-        <span>PORTFOLIO GALLERY</span>
+        <span>PORTFOLIO</span>
 
         <h2>
-            รวมผลงาน Portfolio ทั้ง 11 หน้า
+            ผลงานทั้งหมด
         </h2>
 
     </div>
@@ -486,8 +477,8 @@
 
     <div
         id="galleryGrid"
-        class="gallery-grid"
-    ></div>
+        class="gallery-grid">
+    </div>
 
 </section>
 
@@ -497,12 +488,12 @@
 
 <footer>
 
-    <div class="footer-name">
-        นายกษาปณ์ หัดกระสา
-    </div>
+    <p>
+        © 2026 Portfolio | นายกษาปณ์ หัดกระสา
+    </p>
 
     <p>
-        Portfolio | Engineering
+        โรงเรียนกระทุ่มแบน “วิเศษสมุทคุณ”
     </p>
 
 </footer>
@@ -513,26 +504,28 @@
 
 <div
     id="imageModal"
-    class="modal"
->
+    class="image-modal">
 
     <button
+        id="modalClose"
         class="modal-close"
-        onclick="closeModal()"
-    >
-        ×
+        onclick="closeModal()">
+
+        ✕
+
     </button>
 
     <img
         id="modalImage"
-        src=""
         alt="Portfolio Preview"
     >
 
 </div>
 
 
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
